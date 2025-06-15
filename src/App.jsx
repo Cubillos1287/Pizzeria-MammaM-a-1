@@ -1,11 +1,11 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
 import Footer from './components/Footer';
-import Register from './components/Register';
-import Login from './components/Login';
-
+import Cart from './components/Cart';
+//import Register from './components/Register';
+//import Login from './components/Login';
+//import Home from './components/Home';
 
 function App() {
 
@@ -13,9 +13,10 @@ function App() {
     <>
       <div>
         <Navbar />
-        {/* <Home /> */}
+        {/*<Home />*/}
         {/*<Register/> */}
-        <Login/>
+        {/*<Login/>*/}
+        <Cart />
         <Footer />
       </div>
     </>
