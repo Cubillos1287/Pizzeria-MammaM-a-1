@@ -1,24 +1,27 @@
 import React from "react"
 import { Card, Button } from "react-bootstrap"
 
-const CardPizza = ({name,price, ingredients, img}) => {
-    console.log("Props recibidas", { name, price, ingredients, img});
+const CardPizza = ({name, desc,price, ingredients, img,cardWidth='18rem', cardMargin='50px'}) => {
+    console.log("Props recibidas", { name, price, ingredients, img, desc, cardWidth, cardMargin });
     return (
-        <Card style={{ width: '18rem', margin: '50px' }}>
+        <Card style={{ width: cardWidth, margin: cardMargin, justifyContent:'center'}}>
             <Card.Img variant="top" src={img} alt={name || "Imagen de pizza"} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>
+                    {desc || ""}
+                </Card.Text>
+                <Card.Text>
                    <strong> Ingredientes:</strong>
                 <ul style={{ paddingLeft: "10px", textAlign: "left" }}>
-                    {ingredients.map((ingredient, index) => (
+                    {ingredients ? ingredients.map((ingredient, index) => (
                         <li key={index}>{ingredient}</li>
-                    ))}
+                    )): ""}
                 
                 </ul>
                 </Card.Text>
                 <Card.Text>
-                    <strong>Precio: ${price.toLocaleString('es-CL')}</strong>
+                    <strong>Precio: ${price ? price.toLocaleString('es-CL'): ""}</strong>
                 </Card.Text>
                 <div className="d-flex justify-content-between mt-3">
                     <Button variant="secondary">Ver Más</Button>

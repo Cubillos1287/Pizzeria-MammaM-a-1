@@ -2,12 +2,13 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Cart from './components/Cart';
+import Pizza from './components/Pizza';
+//import Cart from './components/Cart';
 //import Register from './components/Register';
 //import Login from './components/Login';
-//import Home from './components/Home';
+import Home from './components/Home';
 
-function App() {
+const App =() => {
 
   return (
     <>
@@ -16,11 +17,12 @@ function App() {
         {/*<Home />*/}
         {/*<Register/> */}
         {/*<Login/>*/}
-        <Cart />
+        {/*<Cart />*/}
+        <Pizza/>
         <Footer />
       </div>
     </>
-  )
-}
+  );
+};
 
 export default App
