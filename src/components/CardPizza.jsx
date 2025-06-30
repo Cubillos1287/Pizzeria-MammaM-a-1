@@ -13,6 +13,8 @@ const CardPizza = ({name, desc,price, ingredients, img,cardWidth='18rem', cardMa
                 </Card.Text>
                 <Card.Text>
                    <strong> Ingredientes:</strong>
+                </Card.Text>
+                <Card.Text>
                 <ul style={{ paddingLeft: "10px", textAlign: "left" }}>
                     {ingredients ? ingredients.map((ingredient, index) => (
                         <li key={index}>{ingredient}</li>

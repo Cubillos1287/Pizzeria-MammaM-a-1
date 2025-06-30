@@ -2,11 +2,14 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Pizza from './components/Pizza';
-//import Cart from './components/Cart';
-//import Register from './components/Register';
-//import Login from './components/Login';
-import Home from './components/Home';
+import Pizza from './pages/Pizza';
+import Cart from './pages/Cart';
+import Register from './pages/Register';
+import Login from './components/Login';
+import Home from './pages/Home';
+import { Route, Routes } from 'react-router-dom';
+import NotFound from './pages/NotFound';  
+import Profile from './pages/Profile';
 
 const App =() => {
 
@@ -14,11 +17,15 @@ const App =() => {
     <>
       <div>
         <Navbar />
-        {/*<Home />*/}
-        {/*<Register/> */}
-        {/*<Login/>*/}
-        {/*<Cart />*/}
-        <Pizza/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pizza/p001" element={<Pizza />} />
+          <Route path="/cart" element={<Cart />} /> 
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path='/profile' element={<Profile/>} />
+          <Route path="*" element={<NotFound/>} />
+        </Routes>
         <Footer />
       </div>
     </>

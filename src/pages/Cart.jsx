@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {pizzaCart} from "./data/pizzas";
+import {pizzaCart} from "../components/data/pizzas";
 
 
 const Cart = () => {

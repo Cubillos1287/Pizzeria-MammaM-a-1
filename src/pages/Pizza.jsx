@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import CardPizza from "./CardPizza";
+import CardPizza from "../components/CardPizza";
 
 const Pizza = () => {
     console.log("Componente Pizza renderizado");
