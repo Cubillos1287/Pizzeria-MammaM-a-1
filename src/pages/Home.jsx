@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import Header from "../components/Header"
 import CardPizza from "../components/CardPizza"
-import { pizzas } from "../components/data/pizzas"
-console.log(pizzas)
+import {CartContext} from '../context/CartContext'
+
 
 const Home = () => {
+    const {addToCart} = useContext (CartContext);
+    const [info, setInfo] = useState([]);
+
     const consultarApi = async () => {
+    try{
         const url = "http://localhost:5000/api/pizzas";
         const response = await fetch(url);
         const data = await response.json();
+        console.log("Datos recibidos:", data);
         setInfo(data);
+    } catch (error) {
+        console.error("Error al consultar la API:", error);
     }
+    };
+        
     useEffect(() => {
         consultarApi();
     }   , []);
-    const [info, setInfo] = useState([]);
+    
     return (
         <>
             <main>
@@ -22,13 +31,13 @@ const Home = () => {
                 <div className="container mt-4">
                     <div className="d-flex flex-wrap justify-content-center">
                         {info.map((data) => (
-                            console.log("Pizza:", data),
                         <CardPizza
                             key={data.id}
                             name={data.name}
                             price={data.price}
                             ingredients={data.ingredients} 
-                            img={data.img}      
+                            img={data.img}     
+                            addToCart={() => addToCart(data)} 
                         />  
                         ))}
                     </div>
