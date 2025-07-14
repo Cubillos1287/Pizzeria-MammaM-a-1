@@ -1,9 +1,11 @@
 import React, {useContext} from "react";
 import { CartContext } from "../context/CartContext";
-
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
     const {cart, addToCart, removeFromCart, clearCart} = useContext(CartContext);
+    const {token} = useContext(UserContext);
+
     const totalCarrito = () => {
       return cart.reduce((total, pizza) => total + pizza.price * pizza.count, 0);
     };
@@ -38,8 +40,9 @@ const Cart = () => {
         </div>
         <div className="container mt-4">
           <h2>Total del Pedido: ${totalCarrito().toLocaleString("es-CL")}</h2>
-          <button className="btn btn-success" onClick={clearCart} style={{ marginTop:"20px", marginBottom: "20px", width:"150px", height:"50px" }}>
-            Vaciar Carrito
+          <button className="btn btn-success" onClick={clearCart} style={{ marginTop:"20px", marginBottom: "20px", width:"150px", height:"50px" }}
+            disabled= {!token}>
+            Pagar Pedido
           </button>
         </div>
       </main>

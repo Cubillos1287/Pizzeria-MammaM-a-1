@@ -11,24 +11,34 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound';  
 import Profile from './pages/Profile';
 import { CartProvider } from './context/CartContext';
+import { UserProvider } from './context/UserContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App =() => {
 
   return (
     <>
       <div>
+        <UserProvider>
         <CartProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/pizza/p001" element={<Pizza />} />
+          <Route path="/pizza/:id" element={<Pizza />} />
           <Route path="/cart" element={<Cart />} /> 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} /> 
-          <Route path='/profile' element={<Profile/>} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path='/profile' element={
+            <ProtectedRoute> 
+            <Profile/>
+            </ProtectedRoute>
+          }
+          />
+
+        <Route path="*" element={<NotFound/>} />
         </Routes>
         </CartProvider>
+        </UserProvider>
         <Footer />
       </div>
     </>

@@ -32,7 +32,7 @@ const Home = () => {
                     <div className="d-flex flex-wrap justify-content-center">
                         {info.map((data) => (
                         <CardPizza
-                            key={data.id}
+                            id={data.id}
                             name={data.name}
                             price={data.price}
                             ingredients={data.ingredients} 

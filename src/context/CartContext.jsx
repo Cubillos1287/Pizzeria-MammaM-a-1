@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react'
+import { createContext, useState } from 'react';
+import Swal from 'sweetalert2';
 
 export const CartContext = createContext();
 
@@ -17,6 +18,11 @@ export const CartProvider = ({ children }) => {
       }
       return [...prevCart, { ...pizza, count: 1 }];
     });
+    Swal.fire({
+      icon: 'success',
+      title: '¡Éxito!',
+      text: `Pizza agregada al carrito`,
+  });
   };
 
   const removeFromCart = (pizzaId) => {

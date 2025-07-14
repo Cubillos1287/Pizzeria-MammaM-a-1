@@ -1,15 +1,19 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import './Login.css'
 import Swal from 'sweetalert2'
+import {UserContext} from "../context/UserContext";   
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const {token, loginOn} = useContext (UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const validarDatos = (e) => {
         e.preventDefault()
     let message = "";
-    console.log("aqui");
+    
     if (!email.trim() || !password.trim()) {
         message = "Error: Todos los campos son obligatorios";
     }
@@ -29,10 +33,12 @@ const Login = () => {
             title: '¡Éxito!',
             text: `Datos Ingresados Correctamente. ¡Bienvenido ${email}!`,
         });
-        // Aquí podrías redirigir al usuario o limpiar el formulario
+        loginOn();
+
+    
         setEmail("");
         setPassword("");
-        setConfirmPassword("");
+        navigate ("/")
     }
 }
 
