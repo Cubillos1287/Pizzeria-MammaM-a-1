@@ -9,8 +9,8 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
-    const validarDatos = (e) => {
+    
+    const validarDatos = async (e) => {
         e.preventDefault()
     let message = "";
     
@@ -20,21 +20,21 @@ const Login = () => {
     if (password.length < 6){
         message = "Error: La contraseña debe tener al menos 6 caracteres.";
     }
-    
-    if(message) {
+    const data = await loginOn(email, password);
+    console.log(data);
+     if(!data ) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: message,
         });
+        return;
     }else {
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
             text: `Datos Ingresados Correctamente. ¡Bienvenido ${email}!`,
         });
-        loginOn();
-
     
         setEmail("");
         setPassword("");

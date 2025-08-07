@@ -5,13 +5,18 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { UserContext } from '../context/UserContext';
 import { AiFillHome } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const { cart } = useContext(CartContext);
     const {token, logout} = useContext (UserContext);
     const totalCarrito = cart.reduce((total, pizza) => total + pizza.price * pizza.count, 0);
-    
-console.log ('valor token:', token);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    }
 
     return(
     <nav className="Barra"> 
@@ -27,9 +32,9 @@ console.log ('valor token:', token);
                 <Link to="/profile" className="nav-link" style={{ marginRight: "5px" }} >
                 <Button variant="outline-secondary">🔓 Profile</Button>
                 </Link>
-                <Link to="/login" className="nav-link" style={{ marginRight: "5px" }}> 
-                <Button variant="outline-secondary" onClick={logout}>🔒 Logout</Button>
-                </Link>
+
+            <Button variant="outline-secondary" onClick={handleLogout} style={{ marginRight: "5px" }}>
+            🔒 Logout</Button>
             </>
             ) :(
             <>

@@ -4,11 +4,11 @@ import logo from '../assets/img/logo.jpg';
 const Header = () => {
     return(
         <header>
-            <div style={{ position: 'relative', width: '100%', height: 'auto' }}> 
+            <div style={{ position: 'relative', width: '100%',  height: 'auto'}}> 
             <img
             src={logo}
             alt="Pizzria Mamma Mía"
-            className="img-fluid" style={{maxWidth:'100%', height:'auto', filter: 'brightness(30%)'}}
+            className="img-fluid" style={{maxWidth:'100%', height:'auto', maxHeight:'800px', filter: 'brightness(30%)'}}
             />
             </div>
             <div style={{position: 'absolute',top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', textAlign: 'center', width: '80%', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)'}}>
